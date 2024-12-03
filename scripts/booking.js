@@ -10,8 +10,8 @@ const fullDayButton = document.getElementById('full'); // Full-day button
 /********* Colour Change for Days of the Week *********/
 // when the day buttons are clicked, we will apply the "clicked" class to that element
 // and update the dayCounter and recalculate the total cost
-dayButtons.forEach(dayButton => {
-    dayButton.addEventListener('click', () => {
+dayButtons.forEach(function (dayButton) {
+    dayButton.addEventListener('click', function () {
         // If the day is not clicked yet, add the "clicked" class and increase the counter
         if (!dayButton.classList.contains('clicked')) {
             dayButton.classList.add('clicked'); // Add "clicked" class
@@ -27,9 +27,9 @@ dayButtons.forEach(dayButton => {
 
 /********* Clear Days *********/
 // When the clear-button is clicked, remove the "clicked" class from all days, reset dayCounter, and recalculate total cost
-clearDaysButton.addEventListener('click', () => {
+clearDaysButton.addEventListener('click', function () {
     // Remove "clicked" class from all day buttons
-    dayButtons.forEach(dayButton => {
+    dayButtons.forEach(function (dayButton) {
         dayButton.classList.remove('clicked');
     });
     dayCounter = 0; // Reset dayCounter
@@ -41,7 +41,7 @@ clearDaysButton.addEventListener('click', () => {
 
 /********* Change Rate (Full Day vs Half Day) *********/
 // When the half-day button is clicked, set the daily rate to $20
-halfDayButton.addEventListener('click', () => {
+halfDayButton.addEventListener('click', function () {
     // Check if the full-day button is already clicked, and if so, unselect it
     if (fullDayButton.classList.contains('clicked')) {
         fullDayButton.classList.remove('clicked'); // Unselect full-day button
@@ -52,7 +52,7 @@ halfDayButton.addEventListener('click', () => {
 });
 
 // When the full-day button is clicked, set the daily rate back to $35
-fullDayButton.addEventListener('click', () => {
+fullDayButton.addEventListener('click', function () {
     // Check if the half-day button is already clicked, and if so, unselect it
     if (halfDayButton.classList.contains('clicked')) {
         halfDayButton.classList.remove('clicked'); // Unselect half-day button
@@ -66,5 +66,5 @@ fullDayButton.addEventListener('click', () => {
 // Recalculate the total cost based on the number of selected days and the current daily rate
 function recalculateCost() {
     totalCost = dayCounter * dailyRate; // Calculate total cost
-    calculatedCostElement.innerHTML = `$${totalCost}`; // Update displayed cost
+    calculatedCostElement.innerHTML = '$' + totalCost; // Update displayed cost
 }
